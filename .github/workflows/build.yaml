@@ -30,7 +30,7 @@ jobs:
         run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M')"
 
       - name: Build, tag, and push the image to Amazon ECR
-        working-directory: /backend
+        working-directory: ./backend
         id: backend-build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -41,7 +41,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Build, tag, and push the image to Amazon ECR
-        working-directory: /frontend
+        working-directory: ./frontend
         id: frontend-build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
@@ -52,7 +52,7 @@ jobs:
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Build, tag, and push the image to Amazon ECR
-        working-directory: /user-portal-frontend
+        working-directory: ./user-portal-frontend
         id: user-portal-frontend-build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
