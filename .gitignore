@@ -128,3 +128,8 @@ dist
 
 database.xlsx
 notes.docx
+
+
+#terraform
+.terraform*
+*.tfstate

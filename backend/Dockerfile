@@ -3,10 +3,11 @@ FROM node:13-alpine
 WORKDIR /usr/backend
 
 COPY . .
-RUN rm -rf node_modules/ package-lock.json
+RUN rm -rf node_modules/ package-lock.json && \
+    npm install && \
+    npm install nodemon
 
-RUN npm install nodemon
-RUN npm install
 
+ENTRYPOINT ["npm", "run"]
 
-CMD ["sh", "-c", "npm run start"]
+CMD ["start"]
