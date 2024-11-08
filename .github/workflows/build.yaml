@@ -15,7 +15,6 @@ on:
         - user-portal-frontend
         required: true 
 
-
 jobs:
   Build:
     name: Build
