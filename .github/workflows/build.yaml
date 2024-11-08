@@ -3,6 +3,19 @@ on:
   push:
     branches:
       - dev
+
+  workflow_dispatch:
+    inputs:
+      directory_choose:
+        type: choice
+        description: Which working directory to work on
+        options: 
+        - backend
+        - frontend
+        - user-portal-frontend
+        required: true 
+
+
 jobs:
   Build:
     name: Build
