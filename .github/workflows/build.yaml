@@ -1,8 +1,8 @@
 name: Push the Docker image to AWS ECR Repo
 on:
-  push:
-    branches:
-      - dev
+  # push:
+  #   branches:
+  #     - dev
 
   workflow_dispatch:
     inputs:
@@ -39,7 +39,7 @@ jobs:
         run: echo "::set-output name=commit-hash::$(git rev-parse HEAD)"
       - name: Get timestamp
         id: get-timestamp
-        run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M')"
+        run: echo "::set-output name=timestamp::$(date +'%Y-%m-%d-%H-%M-%S')"
 
       - name: Build, tag, and push the image to Amazon ECR
         working-directory: ./${{ github.event.inputs.directory_choose }}
